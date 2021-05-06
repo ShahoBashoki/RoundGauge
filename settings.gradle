@@ -1,2 +1,3 @@
 rootProject.name = "Round Gauge"
 include ':app'
+include ':RoundGauge'
