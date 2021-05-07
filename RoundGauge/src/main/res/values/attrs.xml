@@ -1,40 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- this attribute sets the fill color of the gauge's background -->
-    <attr name="gaugeBackgroundColor" format="color" />
-    <!-- this attribute sets the thickness of the gauge's main component -->
-    <attr name="gaugeBackgroundStroke" format="float" />
-    <!-- this attribute sets the fill color of gauge's progress bar -->
-    <attr name="gaugeProgressBarColor" format="color" />
-    <!-- this attribute sets the thickness gauge's progress bar -->
-    <attr name="gaugeProgressBarStroke" format="float" />
-    <!-- this attribute sets the acceleration of progress -->
-    <attr name="gaugeProgressAcceleration" format="float" />
-    <!-- this attribute sets the Duration time of one progress -->
-    <attr name="gaugeProgressDuration" format="integer" />
-    <!-- this boolean attribute enables the Acceleration of progress  -->
-    <attr name="gaugeProgressBarConstantAcceleration" format="boolean" />
-    <!-- this attribute sets the number of markers in gauge -->
-    <attr name="gaugeNumberOfMarkers" format="integer" />
-    <!-- this attribute sets the thickness of markers -->
-    <attr name="gaugeMarkersStroke" format="float" />
-    <!-- this attribute sets the length of markers -->
-    <attr name="gaugeMarkersLength" format="integer" />
-    <!-- this attribute sets the color of markers -->
-    <attr name="gaugeMarkersColor" format="color" />
 
     <declare-styleable name="RoundGauge">
-        <attr name="gaugeBackgroundColor" />
-        <attr name="gaugeBackgroundStroke" />
-        <attr name="gaugeProgressBarColor" />
-        <attr name="gaugeProgressBarStroke" />
-        <attr name="gaugeProgressAcceleration" />
-        <attr name="gaugeProgressDuration" />
-        <attr name="gaugeProgressBarConstantAcceleration" />
-        <attr name="gaugeNumberOfMarkers" />
-        <attr name="gaugeMarkersStroke" />
-        <attr name="gaugeMarkersLength" />
-        <attr name="gaugeMarkersColor" />
+        <!-- this attribute sets the fill color of the gauge's background -->
+        <attr name="gaugeBackgroundColor" format="color" />
+        <!-- this attribute sets the thickness of the gauge's main component -->
+        <attr name="gaugeBackgroundStroke" format="float" />
+        <!-- this attribute sets the fill color of gauge's progress bar -->
+        <attr name="gaugeProgressBarColor" format="color" />
+        <!-- this attribute sets the thickness gauge's progress bar -->
+        <attr name="gaugeProgressBarStroke" format="float" />
+        <!-- this attribute sets the acceleration of progress -->
+        <attr name="gaugeProgressAcceleration" format="float" />
+        <!-- this attribute sets the Duration time of one progress -->
+        <attr name="gaugeProgressDuration" format="integer" />
+        <!-- this boolean attribute enables the Acceleration of progress  -->
+        <attr name="gaugeProgressBarConstantAcceleration" format="boolean" />
+        <!-- this attribute sets the number of markers in gauge -->
+        <attr name="gaugeNumberOfMarkers" format="integer" />
+        <!-- this attribute sets the thickness of markers -->
+        <attr name="gaugeMarkersStroke" format="float" />
+        <!-- this attribute sets the length of markers -->
+        <attr name="gaugeMarkersLength" format="integer" />
+        <!-- this attribute sets the color of markers -->
+        <attr name="gaugeMarkersColor" format="color" />
     </declare-styleable>
 
     <!-- Whether to enable anti-aliasing -->

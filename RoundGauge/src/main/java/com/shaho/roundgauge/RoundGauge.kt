@@ -30,7 +30,7 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     private var gaugeProgressBarColor: Int = Color.GREEN
     private var gaugeProgressBarStroke: Float = 25F
     private var gaugeProgressAcceleration: Float = 0F
-    private var gaugeProgressDuration: Int = 3000
+    private var gaugeProgressDuration: Int = 2000
     private var gaugeProgressBarConstantAcceleration: Boolean = true
     private var gaugeNumberOfMarkers: Int = 8
     private var gaugeMarkersStroke: Float = 15F
@@ -39,12 +39,14 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 
     private var defaultSize = dipToPx()
 
+    private var listener: OnChangeProgressBarListener? = null
+
     init {
         attrs?.let { itAttrs ->
             initAttrs(itAttrs)
         }
         initPoint()
-        setValue(progressBarValue)
+//        setValue(progressBarValue)
     }
 
     private fun initAttrs(attrs: AttributeSet) {
@@ -56,7 +58,7 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             gaugeProgressBarColor = typedArray.getColor(R.styleable.RoundGauge_gaugeProgressBarColor, Color.GREEN)
             gaugeProgressBarStroke = typedArray.getFloat(R.styleable.RoundGauge_gaugeProgressBarStroke, 25F)
             gaugeProgressAcceleration = typedArray.getFloat(R.styleable.RoundGauge_gaugeProgressAcceleration, 0F)
-            gaugeProgressDuration = typedArray.getInt(R.styleable.RoundGauge_gaugeProgressDuration, 3000)
+            gaugeProgressDuration = typedArray.getInt(R.styleable.RoundGauge_gaugeProgressDuration, 2000)
             gaugeProgressBarConstantAcceleration = typedArray.getBoolean(R.styleable.RoundGauge_gaugeProgressBarConstantAcceleration, true)
             gaugeNumberOfMarkers = typedArray.getInt(R.styleable.RoundGauge_gaugeNumberOfMarkers, 8)
             gaugeMarkersStroke = typedArray.getFloat(R.styleable.RoundGauge_gaugeMarkersStroke, 15F)
@@ -105,7 +107,6 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        drawText(canvas)
         drawArc(canvas)
     }
 
@@ -114,11 +115,9 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 //        // Release resources
 //    }
 
-    private fun drawText(canvas: Canvas?) {
-
-    }
-
     private fun drawArc(canvas: Canvas?) {
+        listener?.onChangeValue(progressBarPercent)
+
         canvas?.save()
 
         val marginStroke = gaugeBackgroundStroke / 2
@@ -193,5 +192,13 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             invalidate()
         }
         progressBarAnimator.start()
+    }
+
+    fun setOnChangeProgressBarListener(listener: OnChangeProgressBarListener) {
+        this.listener = listener
+    }
+
+    interface OnChangeProgressBarListener {
+        fun onChangeValue(value: Float)
     }
 }
