@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_700"
     tools:context=".MainActivity">
 
     <com.shaho.roundgauge.RoundGauge
         android:id="@+id/roundGauge"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +21,61 @@
         android:id="@+id/value_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="100"
+        android:text="0"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/roundGauge"
         app:layout_constraintEnd_toEndOf="@id/roundGauge"
         app:layout_constraintStart_toStartOf="@id/roundGauge"
         app:layout_constraintTop_toTopOf="@id/roundGauge" />
+
+    <EditText
+        android:id="@+id/startTime_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/endTime_editText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roundGauge" />
+
+    <EditText
+        android:id="@+id/endTime_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="600"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/startTime_editText"
+        app:layout_constraintTop_toBottomOf="@id/roundGauge" />
+
+    <EditText
+        android:id="@+id/currentTime_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="300"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/show_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/endTime_editText" />
+
+    <Button
+        android:id="@+id/show_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Show"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/currentTime_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/currentTime_editText"
+        app:layout_constraintTop_toTopOf="@id/currentTime_editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
