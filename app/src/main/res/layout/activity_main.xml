@@ -9,13 +9,39 @@
 
     <com.shaho.roundgauge.RoundGauge
         android:id="@+id/roundGauge"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="0dp"
         android:layout_margin="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="0dp"
+        android:paddingBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/roundGauge"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/roundGauge"
+        app:layout_constraintStart_toStartOf="@id/roundGauge"
+        app:layout_constraintTop_toBottomOf="@id/roundGauge"
+        app:srcCompat="@drawable/ic_joystick_3" />
+
+    <TextView
+        android:id="@+id/endTime_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="زمان بازی باقیمانده"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@id/value_textView"
+        app:layout_constraintEnd_toEndOf="@id/roundGauge"
+        app:layout_constraintStart_toStartOf="@id/roundGauge"
+        app:layout_constraintTop_toTopOf="@id/roundGauge"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/value_textView"
@@ -23,12 +49,13 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="17sp"
         android:textStyle="bold"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@id/roundGauge"
         app:layout_constraintEnd_toEndOf="@id/roundGauge"
         app:layout_constraintStart_toStartOf="@id/roundGauge"
-        app:layout_constraintTop_toTopOf="@id/roundGauge" />
+        app:layout_constraintTop_toBottomOf="@id/endTime_textView" />
 
     <EditText
         android:id="@+id/startTime_editText"

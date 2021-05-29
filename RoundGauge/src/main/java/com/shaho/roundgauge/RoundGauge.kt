@@ -123,6 +123,15 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         } else {
             h.toFloat()
         }
+
+        val positions = floatArrayOf(0.0f, 0.16f, 0.41f, 0.74f)
+        val colors = intArrayOf(Color.RED, Color.RED, Color.YELLOW, Color.GREEN)
+
+        val matrix = Matrix()
+        matrix.preRotate(60F, defaultSize / 2, defaultSize / 2)
+        val sweepGradient = SweepGradient(defaultSize / 2, defaultSize / 2, colors, positions)
+        sweepGradient.setLocalMatrix(matrix)
+        progressBarPaint.shader = sweepGradient
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -142,7 +151,6 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 
         val marginStroke = handlerCircleRadius
         var insideMarkerLineRadius = (defaultSize / 2) - ((gaugeBackgroundStroke / 2) * 2)
-        val externalMarkerLineRadius = (defaultSize / 2) - gaugeMarkersLength - (gaugeBackgroundStroke) - (gaugeMarkersStroke / 2)
         val markerLineRadius = (defaultSize / 2)
 
         backgroundRectF.left = marginStroke
@@ -157,6 +165,11 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             val degrees: Double = i * partOfDegrees
             if (degrees > 150 && degrees < 210) continue
 
+            val externalMarkerLineRadius = if (i % 2 == 0)
+                (defaultSize / 2) - gaugeMarkersLength - (gaugeBackgroundStroke) - (gaugeMarkersStroke / 2)
+            else
+                ((defaultSize / 2) - (gaugeMarkersLength * 0.7) - (gaugeBackgroundStroke) - (gaugeMarkersStroke / 2)).toFloat()
+
             val radians: Double = Math.toRadians(degrees)
 
             val startX: Float = markerLineRadius + sin(radians).toFloat() * insideMarkerLineRadius
@@ -166,24 +179,7 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             canvas?.drawLine(startX, startY, stopX, stopY, markerPaint)
         }
 
-
-        val positions = floatArrayOf(
-            0.33f,
-            0.83f,
-            1.33f
-        )
-        val colors = intArrayOf(
-            Color.RED,
-            Color.YELLOW,
-            Color.GREEN
-        )
-
-//        var matrix = Matrix().preRotate(60F)
-//            var aa=SweepGradient(defaultSize/2,defaultSize/2, colors, positions)
-//        aa.setLocalMatrix(Matrix().preRotate(60F))
-//            progressBarPaint.shader= aa
-//
-//        canvas?.drawArc(backgroundRectF, 120F, 300F * progressBarPercent, false, progressBarPaint)
+        canvas?.drawArc(backgroundRectF, 120F, 300F * progressBarPercent, false, progressBarPaint)
 
         val a: Double = Math.toRadians((300.0 * progressBarPercent) - 150)
         insideMarkerLineRadius = (defaultSize / 2) - (marginStroke)
