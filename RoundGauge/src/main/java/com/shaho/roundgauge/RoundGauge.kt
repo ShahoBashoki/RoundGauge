@@ -158,8 +158,6 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         backgroundRectF.right = defaultSize - marginStroke
         backgroundRectF.bottom = defaultSize - marginStroke
 
-        canvas?.drawArc(backgroundRectF, 120F, 300F, false, backgroundPaint)
-
         val partOfDegrees = 360.0 / gaugeNumberOfMarkers
         for (i in 0 until gaugeNumberOfMarkers) {
             val degrees: Double = i * partOfDegrees
@@ -179,6 +177,7 @@ class RoundGauge(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             canvas?.drawLine(startX, startY, stopX, stopY, markerPaint)
         }
 
+        canvas?.drawArc(backgroundRectF, 120F, 300F, false, backgroundPaint)
         canvas?.drawArc(backgroundRectF, 120F, 300F * progressBarPercent, false, progressBarPaint)
 
         val a: Double = Math.toRadians((300.0 * progressBarPercent) - 150)
